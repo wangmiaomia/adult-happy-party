@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-CN"><head><meta name="description" content="成年人放风派对专属互动邀请函"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c1110"><title>成年人生存系统｜最终邀约版</title><style>
+<!doctype html><html lang="zh-CN"><head><meta name="description" content="成年人放风派对专属互动邀请函"><link rel="icon" href="./assets/favicon.svg" type="image/svg+xml"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c1110"><title>成年人生存系统｜最终邀约版</title><style>
 :root{--bg:#0c1110;--fg:#f8f3e8;--muted:#a9b1ac;--paper:#f4eddf;--ink:#17201d;--accent:#d7b56d;--red:#a63c32;--green:#1e5448;--shadow:0 30px 90px rgba(0,0,0,.35)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;overflow-x:hidden}.app{min-height:100%;position:relative;overflow:hidden}.noise{position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:radial-gradient(#fff .55px,transparent .65px);background-size:13px 13px;mix-blend-mode:soft-light}.grain{position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.03),transparent 34%,rgba(255,255,255,.02));}
 .hero{min-height:680px;padding:30px 18px 50px;display:grid;place-items:center;position:relative}.hero::before,.hero::after{content:"";position:absolute;border-radius:999px;filter:blur(60px);opacity:.25;pointer-events:none}.hero::before{width:280px;height:280px;left:-70px;top:80px;background:var(--accent)}.hero::after{width:220px;height:220px;right:-40px;bottom:70px;background:var(--red)}
@@ -45,7 +45,7 @@
     </div>
   </div>
 </section>
-</main><script src="../assets/personalize.js"></script><script>
+</main><script src="./assets/personalize.js"></script><script>
 function openInner(){const inner=document.getElementById('inner');inner.classList.add('open');setTimeout(()=>inner.scrollIntoView({behavior:'smooth',block:'start'}),180)}
 function confetti(colors=['#d7b56d','#f4eddf','#a63c32']){for(let i=0;i<36;i++){const e=document.createElement('i');e.className='confetti';e.style.left=Math.random()*100+'vw';e.style.background=colors[i%colors.length];e.style.transform='rotate('+Math.random()*180+'deg)';e.style.animationDelay=(Math.random()*.35)+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),2200)}}
 function bindCommon(){const rsvp=document.getElementById('rsvp'),toast=document.getElementById('toast'),reset=document.getElementById('reset');if(rsvp)rsvp.addEventListener('click',()=>{rsvp.classList.add('success');rsvp.textContent='✓ 已确认参加';toast.textContent='席位已为你保留。今晚见。';confetti()});if(reset)reset.addEventListener('click',()=>{location.reload()})}
