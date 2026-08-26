@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>邀请链接生成器｜成年人放风派对</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#07100e;color:#f8f3e8;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+main{max-width:900px;margin:auto;padding:42px 18px 80px}.eyebrow{font-size:10px;letter-spacing:.2em;color:#88a197}
+h1{font:500 clamp(34px,6vw,62px)/1.05 "Songti SC","STSong",serif;margin:10px 0 12px}p{color:#96a69f;line-height:1.8}
+.panel{margin-top:24px;padding:22px;border:1px solid rgba(255,255,255,.1);border-radius:24px;background:rgba(255,255,255,.035)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;font-size:11px;color:#9eb0a8;margin:0 0 7px}
+input,select{width:100%;min-height:48px;padding:0 13px;border-radius:12px;border:1px solid rgba(255,255,255,.13);background:#101d19;color:#fff;outline:none}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}button{min-height:48px;border:0;border-radius:999px;padding:0 20px;font-weight:900;cursor:pointer}.primary{background:#e6bd5d;color:#191305}.secondary{background:#18382e;color:#fff}
+.result{margin-top:18px;padding:16px;border-radius:16px;background:#0d1815;border:1px solid rgba(255,255,255,.1);display:none}.result.show{display:block}
+.url{word-break:break-all;font:12px/1.7 ui-monospace,monospace;color:#e7d194}.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:12px}.quick a{text-align:center;padding:10px 5px;border-radius:9px;background:#16261f;color:#dbe9e2;text-decoration:none;font-size:11px}
+@media(max-width:680px){.grid{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}}
+</style></head>
+<body><main>
+<div class="eyebrow">INVITATION LINK GENERATOR</div>
+<h1>邀请链接生成器</h1>
+<p>填写一次信息即可生成微信可分享的专属链接。GitHub Pages 发布后，这里会自动使用你当前仓库的网址。</p>
+<div class="panel">
+<div class="grid">
+<div class="field"><label>邀请版本</label><select id="theme"><option value="01">01 审批仪式</option><option value="02">02 澳门娱乐黑卡</option><option value="03">03 机密批复</option><option value="04">04 能量核心</option><option value="05">05 专属治疗方案</option></select></div>
+<div class="field"><label>受邀人</label><input id="to" value="李思琪"></div>
+<div class="field"><label>日期</label><input id="date" value="8/29" placeholder="8/29"></div>
+<div class="field"><label>星期</label><input id="day" value="周六"></div>
+<div class="field"><label>时间</label><input id="time" value="19:30"></div>
+<div class="field"><label>地点</label><input id="venue" value="王苗苗之家"></div>
+<div class="field"><label>署名 / 品牌</label><input id="brand" value="天桥短剧"></div>
+</div>
+<div class="actions"><button class="primary" id="make">生成链接</button><button class="secondary" id="copy">复制链接</button></div>
+<div id="result" class="result"><div id="url" class="url"></div><div class="quick" id="quick"></div></div>
+</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let generated="";
+function makeURL(theme){
+  const u=new URL(`./${theme}.html`, location.href);
+  [["to",$("to").value],["date",$("date").value],["day",$("day").value],["time",$("time").value],["venue",$("venue").value],["brand",$("brand").value]].forEach(([k,v])=>{if(v.trim())u.searchParams.set(k,v.trim())});
+  return u.href;
+}
+function render(){
+  generated=makeURL($("theme").value);
+  $("url").textContent=generated;$("result").classList.add("show");
+  $("quick").innerHTML=["01","02","03","04","05"].map(n=>`<a href="${makeURL(n)}" target="_blank">${n} 预览</a>`).join("");
+}
+$("make").onclick=render;
+$("copy").onclick=async()=>{if(!generated)render();try{await navigator.clipboard.writeText(generated);$("copy").textContent="已复制 ✓";setTimeout(()=>$("copy").textContent="复制链接",1300)}catch(e){prompt("复制下面链接",generated)}};
+</script></body></html>
